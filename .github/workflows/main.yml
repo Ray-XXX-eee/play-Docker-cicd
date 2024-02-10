@@ -15,7 +15,7 @@ jobs:
         node-version: 16.*
       if: always()
     - name: Run Docker Build
-      run: docker build . --file Dockerfile -t img-1
+      run: docker build . --file Dockerfile.play -t img-1
     - name: Docker Run container
       run: docker run -d container-1 img-1
     - name: Copy Test-reports
