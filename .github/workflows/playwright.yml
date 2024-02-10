@@ -10,16 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v3
       with:
         node-version: 18
     - name: Install dependencies
       run: npm ci
-    - name: Install Playwright Browsers(chrome)
+    - name: Install Playwright Browsers (Chrome)
       run: npx playwright install chromium
     - name: Run Cucumber tests
       run: npm test
-    - uses: actions/upload-artifact@v4
+    - name: Archive Test Results
+      uses: actions/upload-artifact@v3
       if: always()
       with:
         name: Report
@@ -30,5 +31,4 @@ jobs:
       if: always()
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: test-results
-
+        publish_dir: test-results/results
