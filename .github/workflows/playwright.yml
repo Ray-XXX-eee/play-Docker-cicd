@@ -1,7 +1,7 @@
 name: Playwright Tests
 on:
-  # push:
-  #   branches: [ main, master ]
+  push:
+    branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
 jobs:
@@ -15,13 +15,13 @@ jobs:
         node-version: 18
     - name: Install dependencies
       run: npm ci
-    - name: Install Playwright Browsers
+    - name: Install Playwright Browsers(chrome)
       run: npx playwright install chromium
-    - name: Run Playwright tests
-      run: npm test && allure generate allure-results --clean -o allure-report
+    - name: Run Cucumber tests
+      run: npm test
     - uses: actions/upload-artifact@v3
       if: always()
       with:
-        name: allure-report
-        path: allure-report/
-        retention-days: 30
+        name: Report
+        path: test-results
+        retention-days: 2

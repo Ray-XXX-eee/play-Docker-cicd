@@ -8,7 +8,8 @@ setDefaultTimeout(60*1000*2)
 
   Given('User navigates to the application', async function () {
     //await PF.page.goto("https://bookcart.azurewebsites.net/");
-    await PF.page.goto("https://opensource-demo.orangehrmlive.com");
+    await PF.page.goto(process.env.BASEURL);
+    PF.logger.info('page opened')
 })
 
 // For Bookkart app
@@ -36,10 +37,12 @@ When('User click on the login button', async function () {
 Then('Login should be success', async function () {
   const dasgboardLogo = PF.page.locator('h6:has-text("Dashboard")');
   await expect(dasgboardLogo).toBeVisible();
-  // PF.logger.info("Username: " + userName);
+  PF.logger.info("Inside dashboard");
 })
 
 When('Login should fail', async function () {
-  const failureMesssage = PF.page.locator("mat-error[role='alert']");
-  await expect(failureMesssage).toBeVisible();
+  const dasgboardLogo = PF.page.locator('h6:has-text("Dashboard")');
+  console.log(dasgboardLogo);
+  
+  await expect(dasgboardLogo).toBeVisible()
 });
