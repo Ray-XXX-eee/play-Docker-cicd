@@ -31,4 +31,4 @@ jobs:
       if: always()
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: test-results/results
+        publish_dir: test-results/reports
