@@ -26,7 +26,7 @@ jobs:
         name: Report
         path: test-results
         retention-days: 2
-    - name: Deploy HTML reports to GitHub Pages
+    - name: Deploy HTML reports to GitHub Page
       uses: peaceiris/actions-gh-pages@v3
       if: always()
       with:
