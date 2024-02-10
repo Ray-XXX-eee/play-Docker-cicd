@@ -17,7 +17,7 @@ jobs:
     - name: Run Docker Build
       run: docker build -t img-1 .
     - name: Docker Run container
-      run: docker run -d container-1 img-1
+      run: docker run -d --name container-1 img-1
     - name: Copy Test-reports
       run: sudo docker cp container-1:/test/test-results test-results
     - name: Archive Test Results
