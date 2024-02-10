@@ -1,0 +1,35 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@latest
+    - uses: actions/setup-node@latest
+      with:
+        node-version: 16.*
+      if: always()
+    - name: Run Docker Build
+      run: docker build . --file Dockerfile -t img-1
+    - name: Docker Run container
+      run: docker run -d container-1 img-1
+    - name: Copy Test-reports
+      run: sudo docker cp container-1:/test/test-results test-results
+    - name: Archive Test Results
+      uses: actions/upload-artifact@gh-pages
+      if: always()
+      with:
+        name: Report
+        path: test-results
+        retention-days: 2
+    - name: Deploy HTML reports to GitHub Page
+      uses: peaceiris/actions-gh-pages@v3
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: test-results/reports
