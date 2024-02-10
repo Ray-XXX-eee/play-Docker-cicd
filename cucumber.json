@@ -14,14 +14,14 @@
       "ts-node/register"
     ],
     "reporter": [
-      "@cucumber/allure-reporter"
+      "cucumberjs-allure2-reporter"
     ],
     "reporterOptions": {
       "allure": {
         "outputDir": "./allure-results"
       }
     },
-    "publishQuite": true,
+    "publishQuiet": true,
     "dryRun": false,
     "format": [
       "html:cucumber_report.html"
