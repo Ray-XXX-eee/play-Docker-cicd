@@ -19,11 +19,11 @@ setDefaultTimeout(60*1000*2)
 // });
 
 Given('User enter the username as {string}', async function (username) {
-  await PF.page.locator('input[name="username"]').fill(username);
+  await PF.page.locator('input[name=email]').fill(username);
 });
 
 Given('User enter the password as {string}', async function (password) {
-  await PF.page.locator('input[name="password"]').fill(password);
+  await PF.page.locator('input[type="password"]').fill(password);
 })
 
 When('User click on the login button', async function () {
@@ -35,13 +35,13 @@ When('User click on the login button', async function () {
 
 
 Then('Login should be success', async function () {
-  const dasgboardLogo = PF.page.locator('h6:has-text("Dashboard")');
+  const dasgboardLogo = PF.page.locator('a:has-text("Home")');
   await expect(dasgboardLogo).toBeVisible();
   PF.logger.info("Inside dashboard");
 })
 
 When('Login should fail', async function () {
-  const dasgboardLogo = PF.page.locator('h6:has-text("Dashboard")');
+  const dasgboardLogo = PF.page.locator('a:has-text("Home")');
   console.log(dasgboardLogo);
   
   await expect(dasgboardLogo).toBeVisible()
