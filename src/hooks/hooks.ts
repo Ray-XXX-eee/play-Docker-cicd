@@ -19,7 +19,9 @@ Before(async ({pickle}) => {
   const scenarioName = pickle.name +' '+ pickle.id
   context = await browser.newContext();
   page = await context.newPage();
+  await page.goto("https://liaisongroup.com/")
   pageFixture.page = page
+
   pageFixture.logger = createLogger(options(scenarioName))
 });
 
@@ -31,12 +33,12 @@ After(async function ({pickle, result})  {
       img, 'image/png'
     )
   }
-  await pageFixture.page.close();
-  await context.close();
+  // await pageFixture.page.close();
+  // await context.close();
 });
 
 AfterAll(async () => {
-  await browser.close();
+  // await browser.close();
 });
 
 

@@ -1,17 +1,13 @@
-Feature: User Authentication tests
+Feature: Landing Page
+Test major features for landing page of Liaison Group's website
 
-  Background:
-    Given User navigates to the application
-    #And User click on the login link
+  #Scenario: Test Header section
+   # Given user navigates to the website
+    #When checks all header hyperlink options
+    #When check all hover options
 
-  Scenario: Login should be success
-    And User enter the username as "Admin"
-    And User enter the password as "admin123"
-    When User click on the login button
-    Then Login should be success
-
-  Scenario: Login should not be success
-    Given User enter the username as "koushik"
-    Given User enter the password as "Passkoushik"
-    When User click on the login button
-    But Login should fail
+  Scenario: Test Search section
+    Given user navigates to the website
+    When check resent search
+    Then check actual search
+    When check popular search
