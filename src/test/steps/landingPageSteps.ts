@@ -1,47 +1,32 @@
-import {Given,When,Then,setDefaultTimeout} from "@cucumber/cucumber"
-import {chromium,Page,Browser, expect} from "@playwright/test"
+import { Given,When,Then } from '@cucumber/cucumber';
+import { LandingPage } from '../pages/LandingPage_page';
 import { pageFixture as PF } from "../../hooks/pageFixture" ;
 
-setDefaultTimeout(60*1000*2)
-
-  // await PF.page.goto("https://opensource-demo.orangehrmlive.com");
-
-Given('User navigates to the application', async function () {
-    await PF.page.goto(process.env.BASEURL);
-    PF.logger.info('page opened')
-})
-
-// For Bookkart app
-// Given('User click on the login link', async function () {
-//   await PF.page.locator("//span[text()='Login']").click();
-//   
-// });
-
-Given('User enter the username as {string}', async function (username) {
-  await PF.page.locator('input[name=email]').fill(username);
+Given('user navigates to the website', async function () {
+  PF.page.goto("https://liaisongroup.com/")
 });
 
-Given('User enter the password as {string}', async function (password) {
-  await PF.page.locator('input[type="password"]').fill(password);
-})
-
-When('User click on the login button', async function () {
-  await PF.page.locator("button[type=submit]").click();
-  await PF.page.waitForLoadState();
-  // PF.logger.info("Waiting for 2 seconds")
-  await PF.page.waitForTimeout(2000);
+Given('checks all header hyperlink options', async function () {
+  const landingPage = new LandingPage(PF.page)
+  landingPage.verifyHeaderHyperlinks()
 });
 
+Given('check all hover options', async function () {
+  const landingPage = new LandingPage(PF.page)
+  landingPage.verifyHeaderHoverObjects()
+});
 
-Then('Login should be success', async function () {
-  const dasgboardLogo = PF.page.locator('a:has-text("Home")');
-  await expect(dasgboardLogo).toBeVisible();
-  PF.logger.info("Inside dashboard");
-})
+When('check resent search', async function () {
+  const landingPage = new LandingPage(PF.page)
+  landingPage.verifyRecentSearchWorkflow()
+});
 
-When('Login should fail', async function () {
-  const dasgboardLogo = PF.page.locator('a:has-text("Home")');
-  console.log(dasgboardLogo);
-  
-  await expect(dasgboardLogo).toBeVisible()
+When('check actual search', async function () {
+  const landingPage = new LandingPage(PF.page)
+  landingPage.verifyActualSearchWorkflow('vat')
+});
+
+When('check popular search', async function () {
+  const landingPage = new LandingPage(PF.page)
+  landingPage.verifyPopularSearchWorkflow()
 });

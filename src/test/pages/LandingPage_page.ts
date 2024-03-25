@@ -17,7 +17,7 @@ export class LandingPage {
     private readonly header_newsInsight_link = " //div[class='flex-shrink-0']>a[href*=news-insights-events]";
     private readonly header_contacts_link = "//div[class='flex-shrink-0']>a[href*=financial]";
     //Common Header Hover objects 
-    private readonly header_aboutUs_hover = " a[href*='about-group/']:has-text('About us')";
+    private readonly header_aboutUs_hover = "(//a[text()='About Us'])[1]";
 
     //Common Header pop-up objects
 
@@ -26,7 +26,7 @@ export class LandingPage {
     private readonly recent_search_optn ="(//div/p[contains(text(), 'Recently Searched')])[2]"
     private readonly popular_search_optn ="(//div/p[contains(text(), 'Popular Topics')])[2]"  
     private readonly search_output = "//h1[contains(text(),'Search results for')]"  
-    private readonly popular_search_hover = "((//div[@class='flex w-full md:hidden sm:flex-wrap'])[2]/a)[1]]"
+    private readonly popular_search_hover = "((//div[@class='flex w-full md:hidden sm:flex-wrap'])[2]/a)[1]"
 
     public async navigateToPage() {
         // await this._page.goto("https://liaisongroup.com/");
@@ -45,6 +45,8 @@ export class LandingPage {
 
     public async verifyHeaderHoverObjects()
     {
+        //could not debug it
+        
         // Future enhancement : Could've tried to open in a new window and verify 
     }
 

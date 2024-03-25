@@ -19,7 +19,6 @@ Before(async ({pickle}) => {
   const scenarioName = pickle.name +' '+ pickle.id
   context = await browser.newContext();
   page = await context.newPage();
-  await page.goto("https://liaisongroup.com/")
   pageFixture.page = page
 
   pageFixture.logger = createLogger(options(scenarioName))
@@ -28,6 +27,7 @@ Before(async ({pickle}) => {
 After(async function ({pickle, result})  {
   let img: Buffer;
   if (result?.status == Status.FAILED){
+    await pageFixture.page.waitForTimeout(1000)
     img = await pageFixture.page.screenshot({path:`./test-results/screenshots/${pickle.name}.png`,type:'png'})
     await this.attach(
       img, 'image/png'
