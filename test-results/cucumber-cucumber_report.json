@@ -1,0 +1,92 @@
+[
+  {
+    "description": "Test major features for landing page of Liaison Group's website",
+    "elements": [
+      {
+        "description": "",
+        "id": "landing-page;test-search-section",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "Test Search section",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5026073140
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "user navigates to the website",
+            "match": {
+              "location": "src/test/steps/loginStep.ts:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30974946
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "check resent search",
+            "match": {
+              "location": "src/test/steps/loginStep.ts:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5089046
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "check actual search",
+            "match": {
+              "location": "src/test/steps/loginStep.ts:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14193489
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "check popular search",
+            "match": {
+              "location": "src/test/steps/loginStep.ts:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12252463
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 336175
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "landing-page",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Landing Page",
+    "tags": [],
+    "uri": "src/test/features/login.feature"
+  }
+]
